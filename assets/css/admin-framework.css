@@ -1,0 +1,894 @@
+/**
+ * WordPress Admin Panel UI Framework
+ * Industry Standard Design System for Professional WordPress Plugins
+ * 
+ * Version: 1.0.0
+ * Created: July 2025
+ * Based on: DeeLab Cost Calculator Plugin UI Standards
+ * 
+ * This framework provides consistent, modern, and accessible UI components
+ * for WordPress plugin admin panels following industry best practices.
+ */
+
+/* =============================================================================
+   DESIGN TOKENS & CSS VARIABLES
+   ============================================================================= */
+
+:root {
+  /* Primary Color Palette */
+  --wp-admin-primary: #007cba;
+  --wp-admin-primary-hover: #005a87;
+  --wp-admin-primary-light: rgba(0, 124, 186, 0.1);
+  --wp-admin-primary-border: rgba(0, 124, 186, 0.2);
+  
+  /* Neutral Colors */
+  --wp-admin-white: #ffffff;
+  --wp-admin-gray-50: #f9fafb;
+  --wp-admin-gray-100: #f3f4f6;
+  --wp-admin-gray-200: #e5e7eb;
+  --wp-admin-gray-300: #d1d5db;
+  --wp-admin-gray-400: #9ca3af;
+  --wp-admin-gray-500: #6b7280;
+  --wp-admin-gray-600: #4b5563;
+  --wp-admin-gray-700: #374151;
+  --wp-admin-gray-800: #1f2937;
+  --wp-admin-gray-900: #111827;
+  
+  /* Semantic Colors */
+  --wp-admin-success: #10b981;
+  --wp-admin-success-light: #d1fae5;
+  --wp-admin-warning: #f59e0b;
+  --wp-admin-warning-light: #fef3c7;
+  --wp-admin-error: #ef4444;
+  --wp-admin-error-light: #fee2e2;
+  --wp-admin-info: #3b82f6;
+  --wp-admin-info-light: #dbeafe;
+  
+  /* Typography */
+  --wp-admin-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --wp-admin-font-mono: Consolas, Monaco, 'Courier New', monospace;
+  
+  /* Font Sizes */
+  --wp-admin-text-xs: 12px;
+  --wp-admin-text-sm: 13px;
+  --wp-admin-text-base: 14px;
+  --wp-admin-text-lg: 15px;
+  --wp-admin-text-xl: 16px;
+  --wp-admin-text-2xl: 18px;
+  --wp-admin-text-3xl: 20px;
+  
+  /* Font Weights */
+  --wp-admin-font-normal: 400;
+  --wp-admin-font-medium: 500;
+  --wp-admin-font-semibold: 600;
+  --wp-admin-font-bold: 700;
+  
+  /* Spacing Scale */
+  --wp-admin-space-1: 4px;
+  --wp-admin-space-2: 8px;
+  --wp-admin-space-3: 12px;
+  --wp-admin-space-4: 16px;
+  --wp-admin-space-5: 20px;
+  --wp-admin-space-6: 24px;
+  --wp-admin-space-7: 28px;
+  --wp-admin-space-8: 32px;
+  --wp-admin-space-10: 40px;
+  --wp-admin-space-12: 48px;
+  --wp-admin-space-16: 64px;
+  --wp-admin-space-20: 80px;
+  
+  /* Border Radius */
+  --wp-admin-radius-sm: 6px;
+  --wp-admin-radius-md: 8px;
+  --wp-admin-radius-lg: 12px;
+  --wp-admin-radius-xl: 16px;
+  
+  /* Shadows */
+  --wp-admin-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --wp-admin-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --wp-admin-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --wp-admin-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Transitions */
+  --wp-admin-transition-fast: 150ms ease-in-out;
+  --wp-admin-transition-base: 250ms ease-in-out;
+  --wp-admin-transition-slow: 350ms ease-in-out;
+}
+
+/* =============================================================================
+   LAYOUT CONTAINERS
+   ============================================================================= */
+
+.wp-admin-container {
+  max-width: 1200px;
+  margin: var(--wp-admin-space-5) 0;
+}
+
+.wp-admin-container-fluid {
+  width: 100%;
+  margin: var(--wp-admin-space-5) 0;
+}
+
+.wp-admin-grid {
+  display: grid;
+  gap: var(--wp-admin-space-6);
+}
+
+.wp-admin-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.wp-admin-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.wp-admin-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.wp-admin-flex {
+  display: flex;
+}
+
+.wp-admin-flex-col {
+  flex-direction: column;
+}
+
+.wp-admin-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.wp-admin-items-center {
+  align-items: center;
+}
+
+.wp-admin-justify-between {
+  justify-content: space-between;
+}
+
+.wp-admin-gap-2 {
+  gap: var(--wp-admin-space-2);
+}
+
+.wp-admin-gap-3 {
+  gap: var(--wp-admin-space-3);
+}
+
+.wp-admin-gap-4 {
+  gap: var(--wp-admin-space-4);
+}
+
+.wp-admin-gap-6 {
+  gap: var(--wp-admin-space-6);
+}
+
+/* =============================================================================
+   CARD COMPONENTS
+   ============================================================================= */
+
+.wp-admin-card {
+  background: var(--wp-admin-white);
+  border: 1px solid var(--wp-admin-gray-200);
+  border-radius: var(--wp-admin-radius-lg);
+  box-shadow: var(--wp-admin-shadow-md);
+  margin-bottom: var(--wp-admin-space-6);
+  overflow: hidden;
+  transition: box-shadow var(--wp-admin-transition-base);
+}
+
+.wp-admin-card:hover {
+  box-shadow: var(--wp-admin-shadow-lg);
+}
+
+.wp-admin-card-header {
+  padding: var(--wp-admin-space-6) var(--wp-admin-space-7) var(--wp-admin-space-5);
+  border-bottom: 1px solid var(--wp-admin-gray-100);
+  background: linear-gradient(135deg, var(--wp-admin-gray-50) 0%, var(--wp-admin-gray-100) 100%);
+}
+
+.wp-admin-card-title {
+  font-size: var(--wp-admin-text-2xl);
+  font-weight: var(--wp-admin-font-semibold);
+  color: var(--wp-admin-gray-800);
+  margin: 0 0 var(--wp-admin-space-2) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--wp-admin-space-2);
+}
+
+.wp-admin-card-description {
+  font-size: var(--wp-admin-text-base);
+  color: var(--wp-admin-gray-500);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.wp-admin-card-content {
+  padding: var(--wp-admin-space-7);
+}
+
+.wp-admin-card-footer {
+  padding: var(--wp-admin-space-5) var(--wp-admin-space-7);
+  border-top: 1px solid var(--wp-admin-gray-100);
+  background: var(--wp-admin-gray-50);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* =============================================================================
+   FORM COMPONENTS
+   ============================================================================= */
+
+.wp-admin-form-grid {
+  display: grid;
+  gap: var(--wp-admin-space-8);
+}
+
+.wp-admin-form-section {
+  margin-bottom: var(--wp-admin-space-8);
+  padding-bottom: var(--wp-admin-space-6);
+  border-bottom: 1px solid var(--wp-admin-gray-100);
+}
+
+.wp-admin-form-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.wp-admin-section-title {
+  font-size: var(--wp-admin-text-xl);
+  font-weight: var(--wp-admin-font-semibold);
+  color: var(--wp-admin-gray-800);
+  margin: 0 0 var(--wp-admin-space-4) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--wp-admin-space-2);
+}
+
+.wp-admin-section-title .dashicons {
+  color: var(--wp-admin-primary);
+  font-size: var(--wp-admin-text-2xl);
+}
+
+.wp-admin-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.wp-admin-field-header {
+  margin-bottom: var(--wp-admin-space-4);
+}
+
+.wp-admin-field-label {
+  display: flex;
+  align-items: center;
+  gap: var(--wp-admin-space-2);
+  font-size: var(--wp-admin-text-lg);
+  font-weight: var(--wp-admin-font-semibold);
+  color: var(--wp-admin-gray-700);
+  margin-bottom: var(--wp-admin-space-1);
+}
+
+.wp-admin-field-label .dashicons {
+  color: var(--wp-admin-primary);
+  font-size: var(--wp-admin-text-xl);
+}
+
+.wp-admin-field-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp-admin-space-3);
+}
+
+.wp-admin-field-description {
+  font-size: var(--wp-admin-text-sm);
+  color: var(--wp-admin-gray-500);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.wp-admin-field-description .dashicons {
+  font-size: var(--wp-admin-text-base);
+  width: var(--wp-admin-text-base);
+  height: var(--wp-admin-text-base);
+  margin-top: 1px;
+  flex-shrink: 0;
+  color: var(--wp-admin-gray-400);
+}
+
+/* =============================================================================
+   INPUT COMPONENTS
+   ============================================================================= */
+
+.wp-admin-input,
+.wp-admin-textarea,
+.wp-admin-select {
+  width: 100%;
+  padding: var(--wp-admin-space-4);
+  border: 1px solid var(--wp-admin-gray-300);
+  border-radius: var(--wp-admin-radius-md);
+  font-size: var(--wp-admin-text-base);
+  font-family: var(--wp-admin-font-family);
+  background: var(--wp-admin-gray-50);
+  transition: all var(--wp-admin-transition-fast);
+}
+
+.wp-admin-input:focus,
+.wp-admin-textarea:focus,
+.wp-admin-select:focus {
+  outline: none;
+  border-color: var(--wp-admin-primary);
+  background: var(--wp-admin-white);
+  box-shadow: 0 0 0 2px var(--wp-admin-primary-border);
+}
+
+.wp-admin-input:disabled,
+.wp-admin-textarea:disabled,
+.wp-admin-select:disabled {
+  background: var(--wp-admin-gray-50);
+  color: var(--wp-admin-gray-400);
+  cursor: not-allowed;
+}
+
+.wp-admin-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.wp-admin-textarea-lg {
+  min-height: 200px;
+}
+
+.wp-admin-color-input {
+  width: 60px;
+  height: 40px;
+  border: 2px solid var(--wp-admin-gray-300);
+  border-radius: var(--wp-admin-radius-sm);
+  cursor: pointer;
+  transition: border-color var(--wp-admin-transition-base);
+  padding: 0;
+  background: none;
+}
+
+.wp-admin-color-input:hover {
+  border-color: var(--wp-admin-primary);
+}
+
+.wp-admin-color-input:focus {
+  border-color: var(--wp-admin-primary);
+  box-shadow: 0 0 0 2px var(--wp-admin-primary-border);
+  outline: none;
+}
+
+/* =============================================================================
+   BUTTON COMPONENTS
+   ============================================================================= */
+
+.wp-admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wp-admin-space-2);
+  padding: var(--wp-admin-space-3) var(--wp-admin-space-5);
+  border: 1px solid transparent;
+  border-radius: var(--wp-admin-radius-md);
+  font-size: var(--wp-admin-text-base);
+  font-weight: var(--wp-admin-font-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--wp-admin-transition-fast);
+  user-select: none;
+}
+
+.wp-admin-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--wp-admin-primary-border);
+}
+
+.wp-admin-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wp-admin-btn-primary {
+  background: var(--wp-admin-primary);
+  color: var(--wp-admin-white);
+  border-color: var(--wp-admin-primary);
+}
+
+.wp-admin-btn-primary:hover:not(:disabled) {
+  background: var(--wp-admin-primary-hover);
+  border-color: var(--wp-admin-primary-hover);
+  color: var(--wp-admin-white);
+  transform: translateY(-1px);
+  box-shadow: var(--wp-admin-shadow-md);
+}
+
+.wp-admin-btn-secondary {
+  background: var(--wp-admin-white);
+  color: var(--wp-admin-gray-700);
+  border-color: var(--wp-admin-gray-300);
+}
+
+.wp-admin-btn-secondary:hover:not(:disabled) {
+  background: var(--wp-admin-gray-50);
+  border-color: var(--wp-admin-gray-400);
+  color: var(--wp-admin-gray-800);
+}
+
+.wp-admin-btn-success {
+  background: var(--wp-admin-success);
+  color: var(--wp-admin-white);
+  border-color: var(--wp-admin-success);
+}
+
+.wp-admin-btn-success:hover:not(:disabled) {
+  background: #059669;
+  border-color: #059669;
+  color: var(--wp-admin-white);
+}
+
+.wp-admin-btn-warning {
+  background: var(--wp-admin-warning);
+  color: var(--wp-admin-white);
+  border-color: var(--wp-admin-warning);
+}
+
+.wp-admin-btn-warning:hover:not(:disabled) {
+  background: #d97706;
+  border-color: #d97706;
+  color: var(--wp-admin-white);
+}
+
+.wp-admin-btn-danger {
+  background: var(--wp-admin-error);
+  color: var(--wp-admin-white);
+  border-color: var(--wp-admin-error);
+}
+
+.wp-admin-btn-danger:hover:not(:disabled) {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: var(--wp-admin-white);
+}
+
+.wp-admin-btn-sm {
+  padding: var(--wp-admin-space-2) var(--wp-admin-space-3);
+  font-size: var(--wp-admin-text-sm);
+}
+
+.wp-admin-btn-lg {
+  padding: var(--wp-admin-space-4) var(--wp-admin-space-6);
+  font-size: var(--wp-admin-text-lg);
+}
+
+.wp-admin-action-buttons {
+  display: flex;
+  gap: var(--wp-admin-space-3);
+  align-items: center;
+}
+
+/* =============================================================================
+   TOGGLE SWITCH COMPONENT
+   ============================================================================= */
+
+.wp-admin-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: var(--wp-admin-space-3);
+}
+
+.wp-admin-toggle-inline {
+  display: flex;
+  align-items: center;
+  gap: var(--wp-admin-space-3);
+  margin-bottom: var(--wp-admin-space-6);
+  padding-bottom: var(--wp-admin-space-4);
+}
+
+.wp-admin-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 54px;
+  height: 28px;
+  margin-right: var(--wp-admin-space-3);
+}
+
+.wp-admin-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.wp-admin-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--wp-admin-gray-300);
+  border-radius: 28px;
+  transition: var(--wp-admin-transition-base);
+}
+
+.wp-admin-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--wp-admin-white);
+  border-radius: 50%;
+  transition: var(--wp-admin-transition-base);
+  box-shadow: var(--wp-admin-shadow-sm);
+}
+
+.wp-admin-toggle-switch input:checked + .wp-admin-toggle-slider {
+  background: var(--wp-admin-primary);
+}
+
+.wp-admin-toggle-switch input:checked + .wp-admin-toggle-slider:before {
+  transform: translateX(26px);
+}
+
+.wp-admin-toggle-switch input:focus + .wp-admin-toggle-slider {
+  box-shadow: 0 0 0 2px var(--wp-admin-primary-border);
+}
+
+.wp-admin-toggle-text {
+  font-size: var(--wp-admin-text-base);
+  font-weight: var(--wp-admin-font-medium);
+  color: var(--wp-admin-gray-700);
+  cursor: pointer;
+}
+
+/* =============================================================================
+   RADIO & CHECKBOX COMPONENTS
+   ============================================================================= */
+
+.wp-admin-radio-group,
+.wp-admin-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp-admin-space-3);
+}
+
+.wp-admin-radio-option,
+.wp-admin-checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: var(--wp-admin-space-3);
+  padding: var(--wp-admin-space-3) var(--wp-admin-space-4);
+  border: 1px solid var(--wp-admin-gray-200);
+  border-radius: var(--wp-admin-radius-md);
+  background: var(--wp-admin-white);
+  cursor: pointer;
+  transition: all var(--wp-admin-transition-fast);
+}
+
+.wp-admin-radio-option:hover,
+.wp-admin-checkbox-option:hover {
+  border-color: var(--wp-admin-primary);
+  background: var(--wp-admin-primary-light);
+}
+
+.wp-admin-radio-option input[type="radio"],
+.wp-admin-checkbox-option input[type="checkbox"] {
+  margin: 0;
+  width: auto;
+}
+
+.wp-admin-radio-label,
+.wp-admin-checkbox-label {
+  font-weight: var(--wp-admin-font-medium);
+  color: var(--wp-admin-gray-700);
+}
+
+/* =============================================================================
+   STATUS & NOTIFICATION COMPONENTS
+   ============================================================================= */
+
+.wp-admin-status-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--wp-admin-space-4);
+  border: 1px solid var(--wp-admin-gray-200);
+  border-radius: var(--wp-admin-radius-md);
+  background: var(--wp-admin-white);
+  cursor: pointer;
+  transition: all var(--wp-admin-transition-fast);
+  min-width: 80px;
+}
+
+.wp-admin-status-box:hover {
+  border-color: var(--wp-admin-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--wp-admin-shadow-md);
+}
+
+.wp-admin-status-box.active {
+  background: var(--wp-admin-primary);
+  border-color: var(--wp-admin-primary);
+  color: var(--wp-admin-white);
+}
+
+.wp-admin-status-number {
+  font-size: var(--wp-admin-text-2xl);
+  font-weight: var(--wp-admin-font-bold);
+  line-height: 1;
+}
+
+.wp-admin-status-label {
+  font-size: var(--wp-admin-text-xs);
+  font-weight: var(--wp-admin-font-medium);
+  margin-top: var(--wp-admin-space-1);
+  text-align: center;
+}
+
+.wp-admin-alert {
+  padding: var(--wp-admin-space-4);
+  border-radius: var(--wp-admin-radius-md);
+  margin-bottom: var(--wp-admin-space-4);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--wp-admin-space-3);
+}
+
+.wp-admin-alert-success {
+  background: var(--wp-admin-success-light);
+  border: 1px solid var(--wp-admin-success);
+  color: #065f46;
+}
+
+.wp-admin-alert-warning {
+  background: var(--wp-admin-warning-light);
+  border: 1px solid var(--wp-admin-warning);
+  color: #92400e;
+}
+
+.wp-admin-alert-error {
+  background: var(--wp-admin-error-light);
+  border: 1px solid var(--wp-admin-error);
+  color: #991b1b;
+}
+
+.wp-admin-alert-info {
+  background: var(--wp-admin-info-light);
+  border: 1px solid var(--wp-admin-info);
+  color: #1e40af;
+}
+
+.wp-admin-save-status {
+  font-size: var(--wp-admin-text-sm);
+  font-weight: var(--wp-admin-font-medium);
+  padding: var(--wp-admin-space-2) var(--wp-admin-space-3);
+  border-radius: var(--wp-admin-radius-sm);
+  opacity: 0;
+  transition: opacity var(--wp-admin-transition-base);
+}
+
+.wp-admin-save-status.show {
+  opacity: 1;
+}
+
+.wp-admin-save-status.success {
+  background: var(--wp-admin-success-light);
+  color: #065f46;
+}
+
+.wp-admin-save-status.error {
+  background: var(--wp-admin-error-light);
+  color: #991b1b;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+  .wp-admin-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .wp-admin-card-content {
+    padding: var(--wp-admin-space-5);
+  }
+  
+  .wp-admin-card-header {
+    padding: var(--wp-admin-space-5) var(--wp-admin-space-5) var(--wp-admin-space-4);
+  }
+  
+  .wp-admin-card-footer {
+    padding: var(--wp-admin-space-4) var(--wp-admin-space-5);
+    flex-direction: column;
+    gap: var(--wp-admin-space-3);
+    align-items: stretch;
+  }
+  
+  .wp-admin-action-buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .wp-admin-grid-2,
+  .wp-admin-grid-3,
+  .wp-admin-grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .wp-admin-container {
+    margin: var(--wp-admin-space-4) 0;
+  }
+  
+  .wp-admin-card-content {
+    padding: var(--wp-admin-space-4);
+  }
+  
+  .wp-admin-card-header {
+    padding: var(--wp-admin-space-4) var(--wp-admin-space-4) var(--wp-admin-space-3);
+  }
+  
+  .wp-admin-card-footer {
+    padding: var(--wp-admin-space-3) var(--wp-admin-space-4);
+  }
+  
+  .wp-admin-form-section {
+    margin-bottom: var(--wp-admin-space-6);
+    padding-bottom: var(--wp-admin-space-4);
+  }
+  
+  .wp-admin-action-buttons {
+    flex-direction: column;
+  }
+  
+  .wp-admin-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .wp-admin-card {
+    margin-bottom: var(--wp-admin-space-4);
+  }
+  
+  .wp-admin-card-title {
+    font-size: var(--wp-admin-text-xl);
+  }
+  
+  .wp-admin-toggle-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--wp-admin-space-2);
+  }
+}
+
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+.wp-admin-hidden {
+  display: none !important;
+}
+
+.wp-admin-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.wp-admin-text-center {
+  text-align: center;
+}
+
+.wp-admin-text-right {
+  text-align: right;
+}
+
+.wp-admin-font-medium {
+  font-weight: var(--wp-admin-font-medium);
+}
+
+.wp-admin-font-semibold {
+  font-weight: var(--wp-admin-font-semibold);
+}
+
+.wp-admin-text-primary {
+  color: var(--wp-admin-primary);
+}
+
+.wp-admin-text-success {
+  color: var(--wp-admin-success);
+}
+
+.wp-admin-text-warning {
+  color: var(--wp-admin-warning);
+}
+
+.wp-admin-text-error {
+  color: var(--wp-admin-error);
+}
+
+.wp-admin-bg-primary {
+  background-color: var(--wp-admin-primary);
+}
+
+.wp-admin-bg-success {
+  background-color: var(--wp-admin-success);
+}
+
+.wp-admin-bg-warning {
+  background-color: var(--wp-admin-warning);
+}
+
+.wp-admin-bg-error {
+  background-color: var(--wp-admin-error);
+}
+
+.wp-admin-border-primary {
+  border-color: var(--wp-admin-primary);
+}
+
+.wp-admin-border-success {
+  border-color: var(--wp-admin-success);
+}
+
+.wp-admin-border-warning {
+  border-color: var(--wp-admin-warning);
+}
+
+.wp-admin-border-error {
+  border-color: var(--wp-admin-error);
+}
+
+/* =============================================================================
+   BACKWARD COMPATIBILITY
+   ============================================================================= */
+
+/* Legacy class mappings for existing DeeLab plugin */
+.calc-admin-card { @extend .wp-admin-card; }
+.calc-card-header { @extend .wp-admin-card-header; }
+.calc-card-title { @extend .wp-admin-card-title; }
+.calc-card-description { @extend .wp-admin-card-description; }
+.calc-card-content { @extend .wp-admin-card-content; }
+.calc-card-footer { @extend .wp-admin-card-footer; }
+.calc-form-grid { @extend .wp-admin-form-grid; }
+.calc-form-section { @extend .wp-admin-form-section; }
+.calc-section-title { @extend .wp-admin-section-title; }
+.calc-form-group { @extend .wp-admin-form-group; }
+.calc-field-header { @extend .wp-admin-field-header; }
+.calc-field-label { @extend .wp-admin-field-label; }
+.calc-field-content { @extend .wp-admin-field-content; }
+.calc-field-description { @extend .wp-admin-field-description; }
+.calc-input { @extend .wp-admin-input; }
+.calc-textarea { @extend .wp-admin-textarea; }
+.calc-color-input { @extend .wp-admin-color-input; }
+.calc-btn { @extend .wp-admin-btn; }
+.calc-btn-primary { @extend .wp-admin-btn-primary; }
+.calc-btn-secondary { @extend .wp-admin-btn-secondary; }
+.calc-action-buttons { @extend .wp-admin-action-buttons; }
+.calc-toggle-container { @extend .wp-admin-toggle-container; }
+.calc-toggle-inline { 
+    @extend .wp-admin-toggle-inline;
+    margin-bottom: var(--wp-admin-space-4);
+    padding-bottom: var(--wp-admin-space-2);
+}
+.calc-toggle-switch { @extend .wp-admin-toggle-switch; }
+.calc-toggle-slider { @extend .wp-admin-toggle-slider; }
+.calc-toggle-text { @extend .wp-admin-toggle-text; }
+.calc-radio-group { @extend .wp-admin-radio-group; }
+.calc-radio-option { @extend .wp-admin-radio-option; }
+.calc-radio-label { @extend .wp-admin-radio-label; }
+.calc-save-status { @extend .wp-admin-save-status; }
