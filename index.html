@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Calculator WordPress Plugin - Test Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .status {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+        .file-list {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .file-list ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        .file-list li {
+            margin: 0.5rem 0;
+        }
+        .code {
+            background-color: #f1f3f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        .shortcode-demo {
+            background-color: #e3f2fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧮 Cost Calculator WordPress Plugin</h1>
+            <p>Professional cost calculator for data annotation services</p>
+        </div>
+
+        <div class="status success">
+            <h3>✅ Plugin Status: Ready</h3>
+            <p>All core plugin files have been successfully created and validated with no syntax errors.</p>
+        </div>
+
+        <div class="status info">
+            <h3>📋 What's Been Fixed</h3>
+            <ul>
+                <li><strong>Database Table Names:</strong> Fixed inconsistent table name references across all classes</li>
+                <li><strong>Asset Loading:</strong> Improved frontend script and style enqueuing</li>
+                <li><strong>Error Handling:</strong> Enhanced error handling in JavaScript and PHP</li>
+                <li><strong>API Endpoints:</strong> Corrected REST API table references</li>
+                <li><strong>Admin Functions:</strong> Fixed AJAX endpoints for annotation types and FAQ management</li>
+            </ul>
+        </div>
+
+        <div class="shortcode-demo">
+            <h3>🚀 How to Use</h3>
+            <p>To use this plugin in WordPress, simply add the shortcode to any post or page:</p>
+            <p><span class="code">[cost_calculator]</span></p>
+            <p>The calculator will automatically load with all annotation types, FAQ items, and settings.</p>
+        </div>
+
+        <div class="file-list">
+            <h3>📁 Plugin File Structure</h3>
+            <ul>
+                <li><strong>cost-calculator.php</strong> - Main plugin file with initialization and lifecycle hooks</li>
+                <li><strong>includes/class-database.php</strong> - Database management with table creation and default data</li>
+                <li><strong>includes/class-admin.php</strong> - WordPress admin interface with AJAX endpoints</li>
+                <li><strong>includes/class-api.php</strong> - REST API endpoints for frontend communication</li>
+                <li><strong>includes/class-shortcode.php</strong> - Shortcode rendering and asset management</li>
+                <li><strong>assets/js/frontend.js</strong> - Frontend JavaScript with improved error handling</li>
+                <li><strong>assets/css/frontend.css</strong> - Modern, responsive CSS styling</li>
+                <li><strong>assets/js/admin.js</strong> - Admin panel JavaScript functionality</li>
+                <li><strong>assets/css/admin.css</strong> - Admin interface styling</li>
+            </ul>
+        </div>
+
+        <div class="status warning">
+            <h3>⚠️ WordPress Installation Required</h3>
+            <p>This is a WordPress plugin and requires a WordPress installation to function properly. The plugin provides:</p>
+            <ul>
+                <li>Database tables for annotation types, FAQ items, quotes, and settings</li>
+                <li>Admin interface for managing calculator content</li>
+                <li>REST API endpoints for frontend communication</li>
+                <li>Shortcode functionality for embedding the calculator</li>
+            </ul>
+        </div>
+
+        <div class="status info">
+            <h3>🔧 Installation Instructions</h3>
+            <ol>
+                <li>Upload the plugin folder to <span class="code">/wp-content/plugins/</span></li>
+                <li>Activate the plugin through the WordPress admin panel</li>
+                <li>Configure annotation types and settings in the admin menu</li>
+                <li>Use the shortcode <span class="code">[cost_calculator]</span> in posts/pages</li>
+            </ol>
+        </div>
+
+        <div class="status success">
+            <h3>✨ Key Features</h3>
+            <ul>
+                <li><strong>Modern UI:</strong> Clean, responsive design with Tailwind-inspired styling</li>
+                <li><strong>Admin Management:</strong> Full admin interface for managing content</li>
+                <li><strong>Database Integration:</strong> Proper WordPress database handling</li>
+                <li><strong>REST API:</strong> Secure API endpoints for frontend communication</li>
+                <li><strong>Error Handling:</strong> Comprehensive error handling and logging</li>
+                <li><strong>Responsive Design:</strong> Works on all device sizes</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
